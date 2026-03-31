@@ -1,4 +1,4 @@
-import RewardCard from '@/src/components/molecules/RewardCard/RewardCard';
+import RewardCard from '@/components/molecules/RewardCard/RewardCard';
 import styles from './showcase.module.scss';
 
 export default function ShowcasePage() {
