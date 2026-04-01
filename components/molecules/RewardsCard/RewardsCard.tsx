@@ -14,7 +14,7 @@ interface RewardsCardProps {
   onClick?: () => void;
 }
 
-const RewardsCard: React.FC<RewardsCardProps> = ({
+const RewardsCard = ({
   backgroundImageUrl,
   brandLogoUrl,
   rewardDescription,
@@ -23,7 +23,7 @@ const RewardsCard: React.FC<RewardsCardProps> = ({
   expirationDate,
   bankedRewards,
   onClick,
-}) => {
+}: RewardsCardProps) => {
   return (
     <article
       className={styles['rewards-card']}
@@ -63,7 +63,7 @@ const RewardsCard: React.FC<RewardsCardProps> = ({
             alt="Brand logo"
             width={48}
             height={30}
-            style={{ objectFit: 'contain' }}
+
           />
         </div>
 
@@ -74,7 +74,7 @@ const RewardsCard: React.FC<RewardsCardProps> = ({
               const isFilled = index < completedPunches;
               return (
                 <div
-                  key={index}
+                  key={`punch-${index}`}
                   className={styles['rewards-card__punch-circle']}
                   role="listitem"
                   aria-label={isFilled ? 'Purchased' : 'Not yet purchased'}
