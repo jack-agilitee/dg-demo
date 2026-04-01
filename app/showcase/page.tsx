@@ -25,9 +25,9 @@ export default function ShowcasePage() {
             expirationDate="06/30/26"
           />
           <RewardsCard
-            title="Buy 10 Lay's bags to earn a free party size"
+            title="Buy 4 Lay's bags to earn a free party size"
             purchasedCount={0}
-            totalCount={10}
+            totalCount={4}
             expirationDate="03/15/27"
           />
         </div>
