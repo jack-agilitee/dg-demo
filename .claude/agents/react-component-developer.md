@@ -205,6 +205,13 @@ interface ComponentProps {
 ```
 
 ## Icon & Image Handling
+
+### 🚨 CRITICAL: SVG vs PNG — Use the Correct Format
+- **SVG**: Icons, logos, simple vector graphics, illustrations, shapes, badges
+- **PNG/JPG**: Photos, complex raster images, photographic backgrounds
+- **NEVER use PNG for vector content** — it's wasteful and loses scalability
+- If an asset came from Figma as PNG but is clearly vector content (icons, logos, shapes), flag it or convert it
+
 ```tsx
 import Image from 'next/image';
 
