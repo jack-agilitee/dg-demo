@@ -7,6 +7,8 @@
   border-radius: $radius-card;
   box-shadow: $shadow-card;
   border: 0.33px solid $border-color;
+  width: 343px;
+  height: 216.52px;
 
   &__background {
     position: absolute;
@@ -114,9 +116,9 @@
     flex-direction: row;
     align-items: center;
     gap: 1px;
-    padding: $spacing-xs;
+    padding: $spacing-xs $spacing-xs $spacing-xs 0;
     border-radius: $radius-badge;
-    @include text-shadow;
+    box-shadow: $shadow-text;
   }
 
   &__expiry-icon {
