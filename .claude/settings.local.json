@@ -104,7 +104,9 @@
       "mcp__plugin_figma_figma__get_metadata",
       "mcp__plugin_figma_figma__get_variable_defs",
       "mcp__plugin_figma_figma__get_screenshot",
-      "mcp__github__issue_write"
+      "mcp__plugin_figma_figma__use_figma",
+      "mcp__github__issue_write",
+      "Bash(npx jest:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"

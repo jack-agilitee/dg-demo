@@ -21,6 +21,15 @@ When extracting image assets from Figma, **always determine the correct format**
 
 **NEVER default to PNG for everything.** Inspect each asset and export in the correct format. Vector content exported as PNG is wasteful and loses scalability.
 
+### Asset Inventory Output Requirements
+For EVERY asset in your inventory, you MUST include:
+1. **Descriptive filename** with correct extension (`.svg` for vectors, `.png`/`.jpg` for raster)
+2. **Format classification** — explicitly state `SVG` or `PNG`
+3. **Figma node name** — the `name` property of the node in Figma (e.g., "time", "Rewards icon V2", ".item count") so the parent workflow can find it via `use_figma` traversal
+4. **Rationale** — why this format was chosen
+
+**IMPORTANT:** The `get_design_context` asset URLs ONLY return PNGs regardless of content type. For vector assets, the parent workflow MUST use `use_figma` with `exportAsync({format: 'SVG_STRING'})` to get actual SVG data. Your node names are essential for this — without them, vector assets cannot be properly exported.
+
 ## Interaction Analysis
 - Check for buttons, links, form inputs
 - Identify clickable areas

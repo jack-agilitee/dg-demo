@@ -69,11 +69,26 @@ Expect back:
 - Confirmation branch is checked out locally
 
 **In parallel with the agent above**, download ALL Figma assets yourself:
+
+**CRITICAL: SVG vs PNG handling — `get_design_context` URLs only return PNGs.**
+Use the figma-design-extractor's asset inventory to determine format. For each asset:
+
+1. **PNG/JPG assets** (photos, complex raster backgrounds) — download via curl:
 ```bash
 mkdir -p public/${component-name-kebab}/
 curl -sL "${asset-url}" -o public/${component-name-kebab}/${asset-name}.png
-# Repeat for every asset from the figma-design-extractor inventory
 ```
+
+2. **SVG assets** (icons, logos, simple vector graphics) — export via Figma Plugin API:
+   - Use the **Figma node name** from the extractor's asset inventory
+   - Load `figma:figma-use` skill, then call `use_figma` with a script that:
+     a. Gets the parent component node by ID
+     b. Traverses children to find nodes matching the asset's node name
+     c. Calls `exportAsync({ format: 'SVG_STRING' })` on each vector node
+     d. Returns the SVG strings
+   - Write each SVG string to `public/${component-name-kebab}/${asset-name}.svg`
+
+**NEVER save vector content as .png. Icons, logos, and simple graphics MUST be .svg files.**
 
 ### Phase 4: Build Component — ALL THREE AGENTS IN PARALLEL
 
@@ -126,10 +141,11 @@ Provide:
 - Component file path
 - Accessibility requirements (keyboard nav, ARIA roles)
 - Target: >90% coverage
+- **IMPORTANT: Tell the agent that testing infrastructure (jest, config, mocks) already exists. It should ONLY write the .test.tsx file. No installing packages, no creating config files, no creating __mocks__ directories.**
 
 Expect back:
 - `components/{level}/{ComponentName}/{ComponentName}.test.tsx`
-- Test setup/utilities if needed
+- Nothing else — no config files, no mock files, no package installs
 
 ### Phase 5: Documentation + Showcase — BOTH AGENTS IN PARALLEL
 
