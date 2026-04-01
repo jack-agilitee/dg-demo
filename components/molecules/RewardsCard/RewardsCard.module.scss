@@ -80,9 +80,8 @@
   &__rewards-label {
     flex-shrink: 0;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: $spacing-gap-2xs;
+    gap: $spacing-sm;
   }
 
   &__rewards-icon {
@@ -134,5 +133,6 @@
     font-size: $font-size-xs;
     color: $white;
     text-shadow: $shadow-text;
+    text-transform: uppercase;
   }
 }
