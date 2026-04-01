@@ -1,0 +1,144 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.rewards-card {
+  position: relative;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-card;
+  border: 0.33px solid $gray-light;
+  overflow: hidden;
+  width: 100%;
+  max-width: 327px;
+  aspect-ratio: 327 / 200;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.3);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $white;
+    outline-offset: 2px;
+  }
+
+  &__background {
+    object-fit: cover;
+    border-radius: $border-radius-lg;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  &__header {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-sm;
+    padding: 11px 16px 0;
+  }
+
+  &__logo {
+    flex-shrink: 0;
+    width: 48px;
+    height: 30px;
+    position: relative;
+  }
+
+  &__logo-image {
+    object-fit: contain;
+  }
+
+  &__tracker {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+    flex: 1;
+    justify-content: flex-end;
+    min-height: 30px;
+  }
+
+  &__punches {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+  }
+
+  &__punch {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__count-text {
+    @include label;
+    color: $white;
+    margin: 0;
+    line-height: 1;
+  }
+
+  &__rewards-label {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    flex-shrink: 0;
+  }
+
+  &__rewards-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  &__rewards-text {
+    font-family: $font-family-primary;
+    font-size: 14px;
+    @include font-semibold;
+    line-height: 1.25;
+    color: $white;
+    text-shadow: $shadow-text;
+    white-space: nowrap;
+  }
+
+  &__content {
+    position: absolute;
+    bottom: 17px;
+    left: 24px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+    width: 177px;
+  }
+
+  &__title {
+    @include heading-3;
+    color: $white;
+    text-shadow: $shadow-text;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 20px;
+  }
+
+  &__expiration {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    padding: $spacing-xs $spacing-xs $spacing-xs 0;
+    border-radius: $border-radius-sm;
+    box-shadow: $shadow-text;
+    height: 18px;
+    width: fit-content;
+  }
+
+  &__expiration-date {
+    font-family: $font-family-primary;
+    font-size: 8px;
+    @include font-semibold;
+    line-height: 1.25;
+    color: $white;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+}

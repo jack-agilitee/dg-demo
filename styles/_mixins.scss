@@ -1,0 +1,113 @@
+@use 'variables' as *;
+
+// Typography Mixins
+@mixin heading-1 {
+  font-family: $font-family-primary;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+@mixin heading-2 {
+  font-family: $font-family-primary;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+@mixin heading-3 {
+  font-family: $font-family-primary;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+@mixin body-large {
+  font-family: $font-family-primary;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+@mixin body-medium {
+  font-family: $font-family-primary;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+@mixin body-small {
+  font-family: $font-family-primary;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+@mixin label {
+  font-family: $font-family-primary;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+@mixin button-text {
+  font-family: $font-family-primary;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+@mixin nav-item {
+  font-family: $font-family-primary;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+// Font Weight Mixins
+@mixin font-medium {
+  font-weight: 500;
+}
+
+@mixin font-semibold {
+  font-weight: 600;
+}
+
+@mixin font-bold {
+  font-weight: 700;
+}
+
+// Text Color Mixins
+@mixin text-primary {
+  color: $black;
+}
+
+@mixin text-secondary {
+  color: $gray-light;
+}
+
+// Utility Mixins
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin line-clamp($lines) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// Responsive
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == sm {
+    @media (min-width: $breakpoint-sm) { @content; }
+  } @else if $breakpoint == md {
+    @media (min-width: $breakpoint-md) { @content; }
+  } @else if $breakpoint == lg {
+    @media (min-width: $breakpoint-lg) { @content; }
+  }
+}
