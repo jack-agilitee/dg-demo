@@ -1,37 +1,60 @@
+'use client';
+
 import RewardsCard from '@/components/molecules/RewardsCard/RewardsCard';
+import styles from './page.module.scss';
 
 export default function ShowcasePage() {
   return (
-    <div style={{ padding: '40px', background: '#f5f5f5', minHeight: '100vh' }}>
-      <h1 style={{ fontFamily: 'Montserrat, sans-serif', marginBottom: '32px' }}>
-        Component Showcase
-      </h1>
+    <div className={styles.showcase}>
+      <header className={styles.showcase__header}>
+        <h1 className={styles.showcase__title}>Component Showcase</h1>
+        <h2 className={styles.showcase__subtitle}>RewardsCard</h2>
+      </header>
 
-      <section style={{ marginBottom: '48px' }}>
-        <h2 style={{ fontFamily: 'Montserrat, sans-serif', marginBottom: '16px' }}>
-          RewardsCard
-        </h2>
-        <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
-          <RewardsCard
-            title="Buy 5 Cheetos products to earn 1 for 1¢"
-            purchasedCount={2}
-            totalCount={5}
-            expirationDate="12/31/26"
-          />
-          <RewardsCard
-            title="Buy 3 Doritos to get 1 free"
-            purchasedCount={3}
-            totalCount={3}
-            expirationDate="06/30/26"
-          />
-          <RewardsCard
-            title="Buy 4 Lay's bags to earn a free party size"
-            purchasedCount={0}
-            totalCount={4}
-            expirationDate="03/15/27"
-          />
+      <div className={styles.showcase__grid}>
+        <div className={styles.showcaseItem}>
+          <p className={styles.showcaseItem__label}>Default state (2 of 5 earned)</p>
+          <div className={styles.showcaseItem__cardWrapper}>
+            <RewardsCard
+              backgroundSrc="/images/rewards-card/rewards-card-bg.png"
+              logoSrc="/images/rewards-card/logo.png"
+              totalPunches={5}
+              earnedPunches={2}
+              promoText="Buy 5 Cheetos products to earn 1 for 1¢"
+              expirationDate="12/31/26"
+            />
+          </div>
         </div>
-      </section>
+
+        <div className={styles.showcaseItem}>
+          <p className={styles.showcaseItem__label}>Almost complete (4 of 5 earned)</p>
+          <div className={styles.showcaseItem__cardWrapper}>
+            <RewardsCard
+              backgroundSrc="/images/rewards-card/rewards-card-bg.png"
+              logoSrc="/images/rewards-card/logo.png"
+              totalPunches={5}
+              earnedPunches={4}
+              promoText="Buy 5 Cheetos products to earn 1 for 1¢"
+              expirationDate="12/31/26"
+            />
+          </div>
+        </div>
+
+        <div className={styles.showcaseItem}>
+          <p className={styles.showcaseItem__label}>Clickable card (5 of 5 earned)</p>
+          <div className={styles.showcaseItem__cardWrapper}>
+            <RewardsCard
+              backgroundSrc="/images/rewards-card/rewards-card-bg.png"
+              logoSrc="/images/rewards-card/logo.png"
+              totalPunches={5}
+              earnedPunches={5}
+              promoText="Buy 5 Cheetos products to earn 1 for 1¢"
+              expirationDate="12/31/26"
+              onClick={() => alert('Card clicked!')}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -101,6 +101,40 @@
   overflow: hidden;
 }
 
+// RewardsCard Typography Mixins
+@mixin text-rewards-label {
+  font-family: $font-family-montserrat;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+@mixin text-promo {
+  font-family: $font-family-montserrat;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+@mixin text-expiry {
+  font-family: $font-family-montserrat;
+  font-weight: 600;
+  font-size: 8px;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+@mixin text-tracker {
+  font-family: $font-family-montserrat;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: normal;
+}
+
+@mixin text-shadow {
+  text-shadow: $shadow-text;
+}
+
 // Responsive
 @mixin respond-to($breakpoint) {
   @if $breakpoint == sm {

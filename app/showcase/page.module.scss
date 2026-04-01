@@ -1,0 +1,48 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.showcase {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: $spacing-lg;
+
+  &__header {
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    @include heading-1;
+    color: $black;
+    margin: 0 0 $spacing-xs 0;
+  }
+
+  &__subtitle {
+    @include heading-2;
+    color: $black;
+    margin: 0 0 $spacing-lg 0;
+  }
+
+  &__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-lg;
+    align-items: flex-start;
+  }
+}
+
+.showcaseItem {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+
+  &__label {
+    @include body-medium;
+    @include font-semibold;
+    color: $black;
+    margin: 0;
+  }
+
+  &__cardWrapper {
+    width: 343px;
+  }
+}
