@@ -128,7 +128,7 @@ export default function ShowcasePage() {
   brandLogo="/reward-card/brand-logo-cheetos.png"
   description="Buy 5 Cheetos products to earn 1 for 1¢"
   expiresAt="12/31/26"
-  onActivate={() => alert('Reward activated!')}
+  onActivate={() => console.log('Reward activated!')}
 />`}
           >
             <div style={{ maxWidth: '343px' }}>
@@ -138,7 +138,7 @@ export default function ShowcasePage() {
                 brandLogo="/reward-card/brand-logo-cheetos.png"
                 description="Buy 5 Cheetos products to earn 1 for 1¢"
                 expiresAt="12/31/26"
-                onActivate={() => alert('Reward activated!')}
+                onActivate={() => console.log('Reward activated!')}
               />
             </div>
           </ShowcaseItem>

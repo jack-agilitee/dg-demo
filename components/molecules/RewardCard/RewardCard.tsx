@@ -8,14 +8,14 @@ interface RewardCardProps {
   backgroundImage: string;
   brandLogo: string;
   description: string;
-  expiresAt: string;
+  expiresAt?: string;
   purchasedCount?: number;
   totalRequired?: number;
   bankedRewards?: number;
   onActivate?: () => void;
 }
 
-const RewardCard: React.FC<RewardCardProps> = ({
+function RewardCard({
   variant,
   backgroundImage,
   brandLogo,
@@ -25,29 +25,31 @@ const RewardCard: React.FC<RewardCardProps> = ({
   totalRequired = 5,
   bankedRewards = 0,
   onActivate,
-}) => {
+}: RewardCardProps) {
   const circles = Array.from({ length: totalRequired }, (_, i) => i < purchasedCount);
 
   return (
     <article className={styles['reward-card']}>
       {/* Background image */}
-      <img
+      <Image
         src={backgroundImage}
         alt=""
-        aria-hidden="true"
+        aria-hidden
+        fill
         className={styles['reward-card__bg']}
+        sizes="(max-width: 343px) 100vw, 343px"
       />
 
       {/* Header row */}
       <div className={styles['reward-card__header']}>
         {/* Brand logo */}
-        <div className={styles['reward-card__logo-wrap']}>
-          <img
-            src={brandLogo}
-            alt="Brand logo"
-            className={styles['reward-card__logo']}
-          />
-        </div>
+        <Image
+          src={brandLogo}
+          alt="Brand logo"
+          width={48}
+          height={30}
+          className={styles['reward-card__logo']}
+        />
 
         {/* Punch tracker — activated variant only */}
         {variant === 'activated' && (
@@ -55,7 +57,7 @@ const RewardCard: React.FC<RewardCardProps> = ({
             <div className={styles['reward-card__circles']}>
               {circles.map((filled, idx) => (
                 <Image
-                  key={idx}
+                  key={`circle-${idx}`}
                   src={
                     filled
                       ? '/reward-card/punch-circle-checked.svg'
@@ -99,18 +101,18 @@ const RewardCard: React.FC<RewardCardProps> = ({
       <div className={styles['reward-card__bottom']}>
         <p className={styles['reward-card__description']}>{description}</p>
 
-        {variant === 'activated' ? (
+        {variant === 'activated' && expiresAt ? (
           <div className={styles['reward-card__expiry-pill']}>
             <Image
               src="/reward-card/icon-clock.svg"
               alt=""
-              aria-hidden="true"
+              aria-hidden
               width={14}
               height={14}
             />
             <span className={styles['reward-card__expiry-text']}>{expiresAt}</span>
           </div>
-        ) : (
+        ) : variant === 'explore' ? (
           <button
             type="button"
             className={styles['reward-card__activate-btn']}
@@ -119,10 +121,10 @@ const RewardCard: React.FC<RewardCardProps> = ({
           >
             Activate
           </button>
-        )}
+        ) : null}
       </div>
     </article>
   );
-};
+}
 
 export default RewardCard;

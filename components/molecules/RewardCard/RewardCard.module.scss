@@ -43,15 +43,8 @@
   // -----------------------------------------------------------------------
   // Logo
   // -----------------------------------------------------------------------
-  &__logo-wrap {
-    width: $size-logo-w;
-    height: $size-logo-h;
-    flex-shrink: 0;
-  }
-
   &__logo {
-    width: 100%;
-    height: 100%;
+    flex-shrink: 0;
     object-fit: contain;
   }
 
@@ -181,13 +174,4 @@
     align-self: flex-start;
   }
 
-  // -----------------------------------------------------------------------
-  // Modifier: explore variant
-  // Shows activate button; hides tracker
-  // -----------------------------------------------------------------------
-  &--explore {
-    .reward-card__tracker {
-      display: none;
-    }
-  }
 }
